@@ -87,8 +87,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_061454) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "review"
-    t.integer "rating"
+    t.text "review", null: false
+    t.integer "rating", default: 1, null: false
     t.bigint "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -108,6 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_061454) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favourites", "products"
   add_foreign_key "favourites", "users"
   add_foreign_key "orders", "users"
@@ -115,6 +117,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_061454) do
   add_foreign_key "product_categories", "products"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "orders"
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end
