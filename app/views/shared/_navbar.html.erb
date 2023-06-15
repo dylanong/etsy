@@ -1,12 +1,17 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2560px-Etsy_logo.svg.png" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <form action="#">
+      <input type="text" name="" id="">
+      <button>🔍</button>
+    </form>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
@@ -29,10 +34,20 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
 </div>
+  <div class="categories">
+    <a href="#">Jewellery & Accessories</a>
+    <a href="#">Clothing & Shoes</a>
+    <a href="#">Home & Living</a>
+    <a href="#">Wedding & Party</a>
+    <a href="#">Toys & Entertainment</a>
+    <a href="#">Art & Collectibles</a>
+    <a href="#">Craft Supplies & Tools</a>
+    <a href="#">Vintage</a>
+  </div>
