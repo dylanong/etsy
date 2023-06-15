@@ -56,10 +56,3 @@ reviews = Review.create(
     { review_text: "Fantabulous!", rating: "5", order_id: "4" }
   ]
 )
-
-products = Product.create(
-  [
-    { name: "Leather Watch", price: "200", user_id: "1", quantity: "2", description: "an analog classic watch with leather straps", images:"samples/ecommerce/analog-classic.jpg" },
-    { name: "Leather Watch", price: "200", user_id: "1", quantity: "2", description: "an analog classic watch with leather straps", images:"samples/ecommerce/analog-classic.jpg" },
-  ]
-)
