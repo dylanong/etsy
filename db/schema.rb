@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_15_061454) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_15_072649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_061454) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_favourites_on_product_id"
     t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity", default: 0, null: false
+    t.bigint "product_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -112,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_061454) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favourites", "products"
   add_foreign_key "favourites", "users"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
