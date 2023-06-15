@@ -15,9 +15,9 @@ REVIEW_COMMENTS = [
 ]
 
 LineItem.destroy_all
-Order.destroy_all
 Favourite.destroy_all
 Review.destroy_all
+Order.destroy_all
 ProductCategory.destroy_all
 Product.destroy_all
 Category.destroy_all
@@ -102,9 +102,9 @@ products = Product.create!(
 products.each do |product|
   p "ADDING IMAGE"
 
-  file = URI.open("https://source.unsplash.com/featured/?#{product.name}")
-  product.photo.attach(io: file, filename: "product#{product.id}.png", content_type: "image/png")
-  product.save!
+  # file = URI.open("https://source.unsplash.com/featured/?#{product.name}")
+  # product.photo.attach(io: file, filename: "product#{product.id}.png", content_type: "image/png")
+  # product.save!
 
   p "ADDING A CATEGORY TO PRODUCT"
 
