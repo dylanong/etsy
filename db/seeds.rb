@@ -6,7 +6,108 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+
+
+ProductCategory.destroy_all
+Category.destroy_all
+Product.destroy_all
+User.destroy_all
+
 require "open-uri"
+
+p "CREATING USERS"
+
+users = User.create(
+  [
+    { username: "Dylan", email: "dylan.ong@icloud.com", password: "password" },
+    { username: "Changjie", email: "tan7cj@gmail.com", password: "password" },
+    { username: "Vince", email: "vince_voo@yahoo.com", password: "password" },
+    { username: "Batman", email: "robin@batcave.com", password: "password" },
+    { username: "Saypeng", email: "hosaypeng@gmail.com", password: "password" }
+  ]
+)
+
+p "CREATING CATEGORIES"
+
+categories = Category.create(
+  [
+    { name: "Art" },
+    { name: "Clothing & Shoes" },
+    { name: "Jewellery & Accessories" },
+    { name: "Toy" },
+    { name: "Home & Living" }
+  ]
+)
+
+p "CREATING PRODUCTS"
+
+products = Product.create(
+  [
+    {
+      name: "T-Shirt",
+      price: 20,
+      user_id: 1,
+      quantity: 10,
+      description: "This is a comfortable and stylish T-shirt. Made of 100% cotton and is available in many colors."
+    },
+    {
+      name: "Necklace",
+      price: 50,
+      user_id: 2,
+      quantity: 5,
+      description: "The best necklace for your partner."
+    },
+    {
+      name: "Duck toy",
+      price: 30,
+      user_id: 4,
+      quantity: 15,
+      description: "The best duck for your kid."
+
+    },
+    {
+      name: "Picasso print",
+      price: 75,
+      user_id: 3,
+      quantity: 10,
+      description: "Affordable art work from the best artist in the world."
+    },
+    {
+      name: "Hat",
+      price: 20,
+      user_id: 5,
+      quantity: 5,
+      description: "This is a cool hat. It is made of 100% polyester and is available in a variety of colors."
+    },
+    {
+      name: "Grandfather Clock",
+      price: 50,
+      user_id: 1,
+      quantity: 10,
+      description: "The most authentic grandfather clocks. Tell the time better."
+    }
+  ]
+)
+
+products.each do |product|
+  p "ADDING IMAGE"
+
+  file = URI.open("https://source.unsplash.com/featured/?#{product.name}")
+  product.photo.attach(io: file, filename: "product#{product.id}.png", content_type: "image/png")
+  product.save
+
+  p "ADDING A CATEGORY TO PRODUCT"
+
+  products.categories << Category.all.sample
+  product.save
+
+  # LineItem.create(quanity: 4, product: product, order_id: order)
+end
+
+
+
+
+return
 
 users = User.create(
   [
@@ -20,7 +121,7 @@ users = User.create(
 
 orders = Order.create(
   [
-    { user_id: "1", delivered: "false", total_price: "30" },
+    { user: users[0], delivered: "false", total_price: "30" },
     { user_id: "2", delivered: "false", total_price: "80" },
     { user_id: "3", delivered: "false", total_price: "150" },
     { user_id: "4", delivered: "false", total_price: "150" },
@@ -111,6 +212,8 @@ products.each do |product|
   file = URI.open("https://source.unsplash.com/featured/?#{name}")
   product.photo.attach(io: file, filename: "product#{product.id}.png", content_type: "image/png")
   product.save
+
+  # LineItem.create(quanity: 4, product: product, order_id: order)
 end
 
 category.create(
