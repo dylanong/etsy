@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!
   def new
     @product = Product.new
   end
@@ -6,10 +7,10 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
-    @product.user = current_user
+    @product.user = User.first
 
     if @product.save
-      redirect_to
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
