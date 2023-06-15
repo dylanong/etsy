@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require "open-uri"
+
 users = User.create(
   [
     { username: "Dylan", email: "dylan.ong@icloud.com", password: "password" },
@@ -54,5 +56,79 @@ reviews = Review.create(
     { review_text: "Fantabulous!", rating: "5", order_id: "4" },
     { review_text: "Niccceee!", rating: "5", order_id: "5" },
     { review_text: "Fantabulous!", rating: "5", order_id: "4" }
+  ]
+)
+
+products = Product.create(
+  [
+    {
+      name: "T-Shirt",
+      price: 20,
+      user_id: 1,
+      quantity: 10,
+      description: "This is a comfortable and stylish T-shirt. Made of 100% cotton and is available in many colors."
+    },
+    {
+      name: "Necklace",
+      price: 50,
+      user_id: 2,
+      quantity: 5,
+      description: "The best necklace for your partner."
+    },
+    {
+      name: "Duck toy",
+      price: 30,
+      user_id: 4,
+      quantity: 15,
+      description: "The best duck for your kid."
+
+    },
+    {
+      name: "Picasso print",
+      price: 75,
+      user_id: 3,
+      quantity: 10,
+      description: "Affordable art work from the best artist in the world."
+    },
+    {
+      name: "Hat",
+      price: 20,
+      user_id: 5,
+      quantity: 5,
+      description: "This is a cool hat. It is made of 100% polyester and is available in a variety of colors."
+    },
+    {
+      name: "Grandfather Clock",
+      price: 50,
+      user_id: 1,
+      quantity: 10,
+      description: "The most authentic grandfather clocks. Tell the time better."
+    }
+  ]
+)
+
+products.each do |product|
+  file = URI.open("https://source.unsplash.com/featured/?#{name}")
+  product.photo.attach(io: file, filename: "product#{product.id}.png", content_type: "image/png")
+  product.save
+end
+
+category.create(
+  [
+    { name: "Art" },
+    { name: "Clothing & Shoes" },
+    { name: "Jewellery & Accessories" },
+    { name: "Toy" },
+    { name: "Home & Living" }
+  ]
+)
+
+line_items.create(
+  [
+    { quantity: 4, product_id: "#{product_id}", order_id: "" },
+    { quantity: 5, product_id: "#{product_id}", order_id: "" },
+    { quantity: 10, product_id: "#{product_id}", order_id: "" },
+    { quantity: 20, product_id: "#{product_id}", order_id: "" },
+    { quantity: 25, product_id: "#{product_id}", order_id: "" }
   ]
 )
