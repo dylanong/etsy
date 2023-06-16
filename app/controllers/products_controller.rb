@@ -24,9 +24,14 @@ class ProductsController < ApplicationController
   #   @product = Product.find(params[:id])
   # end
 
+  def listing
+    @products = current_user.products
+  end
+
   private
 
   def product_params
     params.require(:product).permit(:name, :price, :quantity, :description, :photo)
   end
+
 end
