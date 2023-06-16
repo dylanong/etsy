@@ -25,6 +25,10 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def listing
+    @products = current_user.products
+  end
+
   private
 
   def product_params
