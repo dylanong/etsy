@@ -139,6 +139,7 @@ p "CREATE ORDERS"
   Review.create(
     review: REVIEW_COMMENTS.sample,
     rating: rand(5),
-    order: order
+    order: order,
+    product: order.products.sample
   )
 end
