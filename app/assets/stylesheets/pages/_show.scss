@@ -1,0 +1,51 @@
+.thumbnail-product {
+max-width:15%
+
+}
+
+.thumbnail-product > img {
+  width: 80px;
+  padding-left: 15px;
+  padding-top: 20px;
+}
+
+.detail-product {
+  padding-top: 20px;
+  padding-left: 15px;
+  max-width: 35%;
+}
+
+.detail-product > h3 {
+font-weight: bold;
+
+}
+
+.main-product {
+  padding-top: 20px;
+
+}
+
+.main-product > img {
+  width: 600px;
+  height: auto;
+
+}
+
+.product-taxes-text{
+  font-size: small;
+}
+
+.pdt-text {
+  font-size: smaller;
+
+}
+
+.in-basket {
+  color:$red;
+
+}
+
+.sale {
+  color:$yellow ;
+  display:none;
+}

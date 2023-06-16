@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between">
+
+  <%# thumbnail product images on left panel %>
+  <div class="thumbnail-product">
+     <%= cl_image_tag @product.photo.key%>
+     <%= cl_image_tag @product.photo.key%> <%# supposed to be other images when we add more photos %>
+     <%= cl_image_tag @product.photo.key%>
+     <%= cl_image_tag @product.photo.key%>
+     <%= cl_image_tag @product.photo.key%>
+  </div>
+
+  <%# Main product image %>
+  <div class="main-product">
+      <%= cl_image_tag @product.photo.key%>
+  </div>
+
+  <%#  in-basket / sale/ price /tax details below %>
+  <div class="detail-product">
+      <p class="in-basket pdt-text">In 20+ baskets </p>
+        <p class="sale pdt-text">Sale ends in 11 minutes</p>
+           <h3>SGD<%=@product.price%></h3>
+        <h4 class="product-taxes-text">Local taxes included (where applicable)</h4>
+      <p class="pdt-text"><%=@product.name%> - <%=@product.description%></p>
+      <%# reviews text below %>
+     <p class="pdt-text"> "TODO: Link to @user.username profile page with products list" "TODO: @product.review stars - pending" </p>
+
+
+  </div>
+
+</div>
