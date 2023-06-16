@@ -1,0 +1,42 @@
+.thumbnail-product {
+max-width:15%
+
+}
+
+.thumbnail-product > img {
+  width: 80px;
+  padding-left: 15px;
+}
+
+.detail-product {
+  max-width: 35%;
+}
+
+.main-product {
+
+}
+
+.main-product > img {
+  width: 600px;
+  height: auto;
+
+}
+
+.product-taxes-text{
+  font-size: small;
+}
+
+.pdt-text {
+  font-size: smaller;
+
+}
+
+.in-basket {
+  color:$red;
+
+}
+
+.sale {
+  color:$yellow ;
+  display:none;
+}
