@@ -1,6 +1,5 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -16,6 +15,22 @@
   justify-content: space-between;
   font-size: 13px;
   border-bottom: 1px solid grey;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 10px;
+}
+
+.search-bar {
+  position: relative;
+  input {
+    border-radius: 20px;
+    width: 75vw;
+    background-color: $search-bar;
+    height: 40px;
+  }
+  button {
+    position: absolute;
+    right: 3px;
+    top: 5px;
+    border-radius: 0 10px 10px 0;
+    border: 1px solid $search-bar;
+  }
 }

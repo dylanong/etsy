@@ -1,0 +1,9 @@
+.footer-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.footer-sub {
+  display: grid;
+  grid-template-rows: auto;
+}

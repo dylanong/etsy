@@ -1,0 +1,10 @@
+<h1> Your Etsy Shop </h1>
+
+<% if @products == 0 %>
+  <h4><%= link_to "List a product to sell", new_product_path %></h4>
+<% else %>
+  <h4> Products listed for sale </h4>
+<% end %>
+
+<%= link_to "Back to homepage", root_path %>
+<%= link_to "Add new product", new_product_path %>
