@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-
   def new
     @product = Product.new
   end
@@ -18,6 +17,7 @@ class ProductsController < ApplicationController
     productcategory.product = @product
     category = Category.find(params[:product][:category_ids].last.to_i)
     productcategory.category = category
+
     if @product.save
       productcategory.save
       redirect_to root_path
