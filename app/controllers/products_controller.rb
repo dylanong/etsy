@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-
   def new
     @product = Product.new
   end
@@ -14,7 +13,6 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     @product.user = current_user
-
     if @product.save
       redirect_to root_path
     else
