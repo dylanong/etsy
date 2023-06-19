@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create, :show]
 
 
+  get "/orders", to: "orders#deal"
+
   get "/users/:id/products", to: "products#listing"
 
   resources :categories, only: [:show]

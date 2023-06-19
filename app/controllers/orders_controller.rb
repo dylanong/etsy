@@ -5,12 +5,18 @@ class OrdersController < ApplicationController
     product = Product.find(params[:product_id])
 
     if @order.products.include?(product)
-      order.products.find(params[:product_id]).quantity += params[:quantity]
+      order.products.find(params[:product_id]).quantity += params[:quantity].to_i
     else
+      @line_item = LineItem.new
+      @line_item.order = @order
+      @line_item.quantity = params[:quantity].to_i
+      @line_item.save
     end
   end
 
-
+  def deal
+    @order.confirmed!
+  end
 
   def set_order
     latest_order = current_user.order.last
