@@ -20,6 +20,11 @@ font-weight: bold;
 
 }
 
+.detail-product > .simple_form {
+  padding: 3px;
+  border-radius: 5px;
+}
+
 .main-product {
   padding-top: 20px;
 
@@ -47,5 +52,5 @@ font-weight: bold;
 
 .sale {
   color:$yellow ;
-  display:none;
+  // display:none;
 }
