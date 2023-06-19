@@ -1,0 +1,17 @@
+
+<% level_2_category.find_children.each do |level_3_category| %>
+  <div class="sub-menu-items">
+    <h4><%= level_3_category.name %></h4>
+
+    <%
+    # Only load menu if there are children
+    if level_3_category.children? %>
+      <ul>
+        <% level_3_category.find_children.each do |child| %>
+          <li><%= child.name %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+  </div>
+<% end %>
