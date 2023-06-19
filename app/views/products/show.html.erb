@@ -2,11 +2,13 @@
 
   <%# thumbnail product images on left panel %>
   <div class="thumbnail-product d-flex flex-column">
-     <%= cl_image_tag @product.photo.key%>
-     <%= cl_image_tag @product.photo.key%> <%# supposed to be other images when we add more photos %>
-     <%= cl_image_tag @product.photo.key%>
-     <%= cl_image_tag @product.photo.key%>
-     <%= cl_image_tag @product.photo.key%>
+    <ul  data-controller="imgselect">
+     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key %></li>
+     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key%></li> <%# supposed to be other images when we add more photos %>
+     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key%></li>
+     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key%></li>
+     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key%></li>
+    </ul>
   </div>
 
   <%# Main product image %>
@@ -24,17 +26,25 @@
       <%# reviews text below %>
      <p class="pdt-text font-weight-bold d-block"> Shop: <%=@product.user.username%> - TODO: add review stars </p>
 
-      <%# Select quantity drop down %>
-      <p class="pdt-text">Quantity</p>
-        <%= simple_form_for(@product) do |f| %>
-          <%= f.select :quantity, Product::QTYALLOWED %>    <%# hardcoded the qty allowed in global constant inside Product model but should only show product available qty! %>
-        <% end %>
-    <%= link_to "Add to Basket", "#", class: "btn btn-dark rounded-5 d-block" %>
+
+    <div class="form-group">
+          <%= simple_form_for(@product) do |f| %>
+            <%# Select quantity drop down %>
+              <%= f.input :quantity, collection: (1..@product.quantity) %>
+                <%# Colour picker %>
+                  <%= f.input :color, collection: ["Red", "Blue", "Yellow"] %>
+              <%# Add to basket button %>
+            <%= f.submit 'Add to Basket', class: "btn btn-dark rounded-5"%>
+          <% end %>
+
+      <%= link_to "Add to Basket", "#", class: "btn btn-dark rounded-5 d-block" %>
+    </div>
   </div>
 </div>
 
-
+<div class="container">
+  <div class="reviews-summary">
+    <p class="pdt-text"> <%=@reviews%> Reviews for this item </p>
 
   </div>
-
 </div>
