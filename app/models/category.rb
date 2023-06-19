@@ -4,7 +4,9 @@ class Category < ApplicationRecord
   has_many :product_categories
   has_many :products, through: :product_categories
 
-  scope :main_category, -> {
+  # belongs_to :parent, class_name: 'Category', foreign_key: 'parent_id'
+
+  scope :main, -> {
     where(parent_id: nil)
   }
 
@@ -12,12 +14,16 @@ class Category < ApplicationRecord
     Category.where(parent_id: self.id)
   end
 
+  def children?
+    !find_children.empty?
+  end
+
   def find_parent
     Category.find(self.parent_id)
   end
 
   def self.all_root_categories
-    categories = Category.main_category.map do |category|
+    categories = Category.main.map do |category|
       root_categories(category)
     end
     categories.flatten

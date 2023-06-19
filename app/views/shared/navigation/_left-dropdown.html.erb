@@ -1,12 +1,10 @@
-<div id="left-dropdown">
-
-    <li><a href="#">All Jewellery & Accesories →</a></li>
-    <a class="accessories" href="#" data-controller="hello" data-action="dropdown#showMenu mouseout->dropdown#hideMenu">Accessories</a>
-    <li>Bags & Purses</li>
-    <li>Necklaces</li>
-    <li>Rings</li>
-    <li>Earrings</li>
-    <li>Bracelets</li>
-    <li>Body Jewellery</li>
-    <li>All Jewellery →</li>
+<div id="left-menus-wrapper">
+  <% Category.main.each do |parent_category| %>
+    <div class="left-menu">
+      <li><a href="#">All <%= parent_category.name %> →</a></li>
+      <% parent_category.find_children.each do |sub_category| %>
+        <li><%= sub_category.name %></li>
+      <% end %>
+    </div>
+  <% end %>
 </div>

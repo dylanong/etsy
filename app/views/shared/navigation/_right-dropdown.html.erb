@@ -1,161 +1,22 @@
-<div class="right-main-menu" id="menu" data-dropdown-target="menu">
-  <div class="d-flex right-accessories">
-    <div>
-      <div>
-        <ul>
-          <li>Hats & Caps</li>
-          <li>Baseball & Trucker Hats</li>
-          <li>Beanies & Winter Hats</li>
-          <li>Sun Hats</li>
-        </ul>
-      </div>
+<div id="right-menus-wrapper">
 
-      <div>
-        <ul>
-          <li>Hair Accessories</li>
-          <li>Headbands</li>
-          <li>Fascinators & Mini Hats</li>
-          <li>Hairslides & Clips</li>
-          <li>Ties & Elastics</li>
-          <li>Wreaths & Tiaras</li>
-        </ul>
-      </div>
+  <% @sub_categories.each do |sub_categories| %>
+    <div class="right-menu">
+      <% sub_categories.each do |sub_category| %>
+        <div class="sub-menu-items">
+          <h4><%= sub_category.name %></h4>
+          <%
+          # Only load menu if there are children
+          if sub_category.children? %>
+            <ul>
+              <% sub_category.find_children.each do |child| %>
+                <li><%= child.name %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
     </div>
+  <% end %>
 
-    <div>
-      <ul>
-        <li>Sunglasses & Eyewear</li>
-        <li>Scarves & Wraps</li>
-        <li>Belts & Braces</li>
-        <li>Keychains & Lanyards</li>
-        <li>Cosmetic & Toiletry Bags</li>
-        <li>Gloves & Mittens</li>
-        <li>Umbrellas & Rain Accessories</li>
-        <li>Wallets & Money Clips</li>
-        <li>All Accessories →</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="d-flex" name="bags&purses">
-    <div>
-      <p>Backpacks</p>
-      <ul>
-        <li>Handbags</li>
-        <li>Clutches & Evening Bags</li>
-        <li>Shoulder Bags</li>
-      </ul>
-      <p>Nappy Bags</p>
-    </div>
-
-    <div>
-      <p>Luggage & Duffel Bags</p>
-      <p>Phone Cases</p>
-      <p>Totes</p>
-      <p>All Bags & Purses</p>
-    </div>
-  </div>
-
-  <div class="d-flex" name="necklaces">
-    <div>
-      <ul>
-        <li><a href="#">Pendants</a></li>
-        <li><a href="#">Chokers</a></li>
-        <li><a href="#">Charm Necklaces</a></li>
-        <li><a href="#">Crystal Necklaces</a></li>
-        <li><a href="#">Monogram & Name Necklaces</a></li>
-        <li><a href="#">Beaded Necklaces</a></li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li>Chains</li>
-        <li>Bib Necklaces</li>
-        <li>Tassel Necklaces</li>
-        <li>All Necklaces →</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="d-flex" name="rings">
-    <div>
-      <ul>
-        <li>Stackable Rings</li>
-        <li>Statement Rings</li>
-        <li>Bands</li>
-        <li>Signet Rings</li>
-        <li>Multi-Stone Rings</li>
-        <li>Solitaire Rings</li>
-        <li>Midi Rings</li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li>Wedding & Engagement</li>
-        <li>Engagement Rings</li>
-        <li>Wedding Bands</li>
-        <li>Promise Rings</li>
-        <li>Bridal sets</li>
-        <li>All Rings</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="d-flex" name="earrings">
-    <div>
-      <ul>
-        <li>Dangle & Drop Earrings</li>
-        <li>Stud Earrings</li>
-        <li>Hoop Earrings</li>
-        <li>Chandelier Earrings</li>
-        <li>Ear Jackets & Climbers</li>
-      </ul>
-    </div>
-
-    <div>
-      <li>Cluster Earrings</li>
-      <li>Cuff & Wrap Earrings</li>
-      <li>Clip-On-Earrings</li>
-      <li>All Earings → </li>
-    </div>
-  </div>
-
-  <div class="d-flex" name="bracelets">
-    <div>
-      <ul>
-        <li>Beaded Bracelets</li>
-        <li>Bangles</li>
-        <li>Charm Bracelets</li>
-        <li>Woven & Braided Bracelets</li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li>Cuff Bracelets</li>
-        <li>Chain & Link Bracelets</li>
-        <li>All Bracelets →</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="d-flex" name="body-jewellery">
-    <div>
-      <ul>
-        <li>Anklets</li>
-        <li>Hair Jewellery</li>
-        <li>Nose Rings & Studs</li>
-        <li>Arm Bands</li>
-        <li>Nipple Jewellery</li>
-        <li>Belly Rings</li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li>Shoulder Jewellery</li>
-        <li>Toe Rings</li>
-        <li>Lip Rings</li>
-        <li>All Body Jewellery →</li>
-      </ul>
-    </div>
-  </div>
 </div>
