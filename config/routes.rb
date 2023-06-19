@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :products, only: [:index, :new, :create]
+  resources :products, only: [:index, :new, :create, :show]
 
   get "/users/:id/products", to: "products#listing"
 
