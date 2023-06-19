@@ -21,6 +21,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+  end
+
+  def listing
+    @products = current_user.products
   end
 
   private

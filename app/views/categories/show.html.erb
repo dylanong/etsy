@@ -1,0 +1,21 @@
+<%= link_to "asda", root_path %>
+<h1><%= @category.name %></h1>
+
+<h1>Find something you love</h1>
+<div class="row">
+  <button><i class="fa-light fa-filter-list"></i>All Filters</button>
+  <button>Sort by: Relevancy</button>
+</div>
+<% @products.each do |product| %>
+  <div class="col-md-3 col-lg-3 col-sm-6">
+    <img src="<%= cl_image_path product.photo.key, height: 300, crop: :fill%>" alt="">
+    <div class="row">
+      <%= product.name %>
+    </div>
+
+    <div class="row">
+      SGD<%= product.price %>
+    </div>
+  </div>
+<% end %>
+<%# <i class="fa-solid fa-arrow-left"></i> %>
