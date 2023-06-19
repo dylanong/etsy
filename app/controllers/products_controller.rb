@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-
   def new
     @product = Product.new
   end
@@ -14,8 +13,13 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     @product.user = current_user
+    productcategory = ProductCategory.new
+    productcategory.product = @product
+    category = Category.find(params[:product][:category_ids].last.to_i)
+    productcategory.category = category
 
     if @product.save
+      productcategory.save
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
@@ -33,7 +37,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :quantity, :description, :photo)
+    params.require(:product).permit(:name, :price, :quantity, :description, :photo, categories: [])
   end
 
   def set_product

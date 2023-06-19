@@ -1,26 +1,37 @@
-.cards {
-  border-radius: 5px;
-  transition: 300ms ease;
+// .all-cards {
+//   border-radius: 5px;
+//   transition: 300ms ease;
+//   height: 100px;
+// }
+
+// .cards:hover {
+//   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+//   margin: 2px;
+// }
+
+// .card {
+//   background-size: cover;
+//   border-radius: 5px;
+//   height: 70%;
+// }
+
+// .text {
+//   padding: 0;
+//   margin: 0;
+//   font-size: 14px;
+//   height: 20%;
+//   line-height: 1;
+// }
+
+.popular-gift-card {
+  width: 25%;
 }
 
-.cards:hover {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin: 2px;
-}
-
-.card {
-  background-image: url("https://images.unsplash.com/photo-1549465220-1a8b9238cd48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2lmdHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60");
-  background-size: cover;
-  border-radius: 5px;
-  height: 70%;
-}
-
-.text {
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-  height: 20%;
-  line-height: 1;
+.circle {
+  width: 200px; /* Adjust the width and height as needed */
+  height: 200px;
+  border-radius: 50%; /* This creates a circular shape */
+  overflow: hidden; /* This ensures the image stays within the circle */
 }
 
 .help-button {
@@ -29,4 +40,33 @@
   margin: 12px 0px 0px;
   padding: 10px;
   border-radius: 15%;
+}
+
+.page h3 {
+  padding-top: 20px;
+}
+
+.rating-stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.star {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  margin-right: 5px;
+}
+
+.star::before {
+  content: "\2606"; /* Empty star icon */
+  color: #dabd18b2;
+}
+
+.star.filled::before {
+  content: "\2605"; /* Filled star icon */
 }
