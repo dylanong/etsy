@@ -6,7 +6,9 @@
     <% @products.each do |product| %>
       <div class="popular-gift-card">
         <div class="border border-primary">
-          <img class="img-thumbnail" src="<%= cl_image_path(product.photo.key, :width => 400, :height => 400, :crop => "fill") if product.photo.key %>" alt="<%= product.name %>" class="product-image">
+        <a href="<%= product_path(product) %>">
+         <img class="img-thumbnail" src="<%= cl_image_path(product.photo.key, :width => 400, :height => 400, :crop => "fill") if product.photo.key %>" alt="<%= product.name %>" class="product-image">
+          </a>
         </div>
         <div class="card border border-primary">
           <div class="bg-white mx-1 text-center">
