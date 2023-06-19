@@ -41,33 +41,27 @@
     </div>
   </div>
 </div>
-<div class="categories-wrapper">
+<div class="categories-wrapper" data-controller="navbar" data-action="mouseleave->navbar#closeMenu">
   <div class="container-fluid">
+
+    <%# Primary Categories %>
     <div class="categories primary-categories">
+      <% Category.main.each do |category| %>
+        <a
+          class="main-dropdown"
+          href="#"
+          data-action="mouseover->navbar#showMenu"
+          data-id="<%= category.id %>">
+            <%= category.name %>
+          </a>
+      <% end %>
+    </div>
 
-      <div class="category">
-        <button class="main-dropdown" href="#">Jewellery & Accessories</button>
-        <div class="menu">
-          <div>
-            <%= render 'shared/navigation/left-dropdown' %>
-          </div>
-          <div class="right">
-            <%= render 'shared/navigation/right-dropdown' %>
-          </div>
-        </div>
-      </div>
-
-      <div class="category">
-        <a href="#" class="main-dropdown">Clothing & Shoes</a>
-        <div class="menu">
-        </div>
-      </div>
-      <a href="#">Home & Living</a>
-      <a href="#">Wedding & Party</a>
-      <a href="#">Toys & Entertainment</a>
-      <a href="#">Art & Collectibles</a>
-      <a href="#">Craft Supplies & Tools</a>
-      <a href="#">Vintage</a>
+    <%# Dropdown menu %>
+    <div class="subcategories-wrapper" data-navbar-target="wrapper">
+      <%= render 'shared/navigation/left-dropdown' %>
+      <%= render 'shared/navigation/right-dropdown' %>
     </div>
   </div>
+
 </div>
