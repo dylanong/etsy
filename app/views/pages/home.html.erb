@@ -3,23 +3,32 @@
 
   <h3 class="px-3">Popular gifts right now</h3>
   <div class="d-flex">
-    <% @products.each do |product| %>
-      <div class="popular-gift-card">
-        <div class="border border-primary">
+  <% @products.each do |product| %>
+    <div class="popular-gift-card">
+      <div class="">
         <a href="<%= product_path(product) %>">
-         <img class="img-thumbnail" src="<%= cl_image_path(product.photo.key, :width => 400, :height => 400, :crop => "fill") if product.photo.key %>" alt="<%= product.name %>" class="product-image">
-          </a>
-        </div>
-        <div class="card border border-primary">
-          <div class="bg-white mx-1 text-center">
-              <span><%= product.description %></span><br>
-              <span><%= product.average_rating %></span><br>
-              <span><%= product.price %></span>
+          <img class="img-thumbnail" src="<%= cl_image_path(product.photo.key, :width => 400, :height => 400, :crop => "fill") if product.photo.key %>" alt="<%= product.name %>" class="product-image">
+         </a>
+      </div>
+      <div class="card">
+        <div class="bg-white mx-1 text-center">
+          <span><%= product.description %></span><br>
+          <div class="rating-stars">
+            <% average_rating = product.average_rating.to_i %>
+            <% 5.times do |i| %>
+              <% if i < average_rating %>
+                <span class="star filled"></span>
+              <% else %>
+                <span class="star"></span>
+              <% end %>
+            <% end %>
           </div>
+          <span><%= product.price %></span>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 
   <!-- Circle section -->
   <div class="d-flex justify-content-between mt-5 mb-5">
