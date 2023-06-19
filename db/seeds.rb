@@ -464,7 +464,7 @@ products.each do |product|
 
   p "ADDING A CATEGORY TO PRODUCT"
 
-  product.categories << Category.all.sample
+  product.categories << Category.all_root_categories.sample
 
   # LineItem.create!(quanity: 4, product: product, order_id: order)
 end
@@ -499,84 +499,3 @@ p "CREATE ORDERS"
     product: order.products.sample
   )
 end
-
-Jewellery & Accessories
-Clothing & Shoes
-Home & Living
-Wedding & Party
-Toys & Entertainment
-Art & Collecibles
-Craft Supplies & Tools
-Vintage
- Accessories
- Bags & Purses
- Necklaces
- Rings
- Earrings
- Bracelets
- Body Jewellery
- Hats & Caps
- Hair Accessories
- Sunglasses & Eyewear
- Scarves & Wraps
- Belts & Braces
- Keychains & Lanyards
- Cosmetic & Toiletry Bags
- Gloves & Mittens
- Umbrellas & Rain Accessories
- Wallets & Money Clips
- Baseball & Trucker Hats
- Beanies & Winter Hats
- Sun Hats
- Headbands
- Fascinators & Mini Hats
- Hairslides & Clips
- Ties & Elastics
- Wreaths & Tiaras
- Backpacks
- Handbags
- Nappy Bags
- Luggage & Duffel Bags
- Phones Cases
- Totes
- Clutches & Evening Bags
- Shoulder Bags
- Pendants
- Chokers
- Charm Necklaces
- Crystal Necklaces
- Monogram & Name Neckalces
- Beaded Necklaces
- Chains
- Bib Necklaces
- Tassel Necklaces
- Women's
- Men's
- Kid's & Baby
- Bags & Purses
- Women's Clothing
- Women's Shoes
- Dresses
- Tops & Tees
- Skirts
- Jackets
- Boots
- Sandals
- Slippers
- Trainers
- Home
- Bath & Beauty
- Pet Supplies
- Home Decor
- Rugs
- Furniture
- Bedding
- Bathroom
- Outdoor & Gardening
- Storage & Organisation
- Office
- Lighting
- Wall Decor
- Decorative Cushions
- Picture Frames & Displays
- Candeles & Holders

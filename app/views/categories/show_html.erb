@@ -1,6 +1,9 @@
-<h2>Find something you love</h2>
+<%= link_to <i class="fa-solid fa-arrow-left"></i>, root_path %>
+<h1><%= @category.name %></h1>
+
+<h1>Find something you love</h1>
 <div class="row">
-  <button>All Filters</button>
+  <button><i class="fa-light fa-filter-list"></i>All Filters</button>
   <button>Sort by: Relevancy</button>
 </div>
 <% @products.each do |product| %>

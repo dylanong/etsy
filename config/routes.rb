@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create]
 
   get "/users/:id/products", to: "products#listing"
+
+  resources :categories, only: [:show]
 end
