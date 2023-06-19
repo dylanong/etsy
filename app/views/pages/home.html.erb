@@ -1,51 +1,45 @@
 <!-- Below Navbar -->
-<div class="container">
+<div class="page">
+
   <h3 class="px-3">Popular gifts right now</h3>
-  <div class="body">
+  <div class="d-flex">
     <% @products.each do |product| %>
-      <div class="cards">
-        <div class="card"></div>
-        <div class="text text-center">
-            <span><%= product.description %></span><br>
-            <span><%= product.average_rating %></span><br>
-            <span><%= product.price %></span>
+      <div class="popular-gift-card">
+        <div class="border border-primary">
+          <img class="img-thumbnail" src="<%= cl_image_path(product.photo.key, :width => 400, :height => 400, :crop => "fill") if product.photo.key %>" alt="<%= product.name %>" class="product-image">
+        </div>
+        <div class="card border border-primary">
+          <div class="bg-white mx-1 text-center">
+              <span><%= product.description %></span><br>
+              <span><%= product.average_rating %></span><br>
+              <span><%= product.price %></span>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
+
+  <!-- Circle section -->
+  <div class="d-flex justify-content-between mt-5 mb-5">
+    <% @circles.each do |category| %>
+      <div class="d-flex flex-column align-items-center">
+        <div class="bg-white mx-1 text-center circle">
+          <img class="img-fluid" src="<%= category[:img_url] %>" alt="<%= category[:name] %>">
+        </div>
+        <div class="mt-2 fw-bold"><%= category[:name] %></div>
+      </div>
+    <% end %>
+  </div>
+
   <!-- Category section -->
   <h3>Shop our popular gift categories</h3>
-  <div class="body">
-    <div class="cards">
-      <div class="card"></div>
-      <div class="text text-center">
-        <p>Anniversary gifts</p>
+  <div class="d-flex">
+    <% @popular_categories.each do |category| %>
+      <div class="bg-white mx-1 text-center">
+        <img class="img-fluid" src="<%= category[:img_url] %>" alt="<%= category[:name] %>">
+        <div class="mt-2 fw-bold"><%= category[:name] %></div>
       </div>
-    </div>
-     <div class="cards">
-      <div class="card"></div>
-      <div class="text text-center">
-        <p>Gifts for him</p>
-      </div>
-    </div>
-     <div class="cards">
-      <div class="card"></div>
-      <div class="text text-center">
-        <p>Gifts for her</p>
-      </div>
-    </div>
-     <div class="cards">
-      <div class="card"></div>
-      <div class="text text-center">
-        <p>personalised gift ideas</p>
-      </div>
-    </div>
-     <div class="cards">
-      <div class="card"></div>
-      <div class="text text-center">
-        <p>Wedding gifts</p>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
 

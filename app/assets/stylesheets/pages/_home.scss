@@ -1,13 +1,18 @@
 // Specific CSS for your home-page
 .body {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
   height: 30vh;
   width: 100vw;
   margin-bottom: 150px;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
+  border: 1px solid red;
 }
 .desc-sec {
   background-color: $background;
+}
+
+.page {
+  padding: 0 0 10px 10px;
 }
