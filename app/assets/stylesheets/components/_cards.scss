@@ -53,6 +53,14 @@
   margin-bottom: 10px;
 }
 
+.rating-stars-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
+}
+
 .star {
   display: inline-block;
   width: 20px;
@@ -64,7 +72,7 @@
 
 .star::before {
   content: "\2606"; /* Empty star icon */
-  color: #dabd18b2;
+  color: black;
 }
 
 .star.filled::before {
