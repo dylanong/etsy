@@ -6,4 +6,8 @@ class Order < ApplicationRecord
   has_many :reviews
 
   validates :user_id, presence: true
+
+  def confirmed!
+    self.confirmed? = true
+  end
 end

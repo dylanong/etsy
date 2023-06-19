@@ -69,7 +69,7 @@
         <p>Type a two- or three-word description of your item to get category suggestions that will help more shoppers find it.</p>
       </div>
       <div class="col">
-        <%= f.input :categories, collection: Category.all_root_categories %>
+        <%= f.association :categories, collection: Category.all_root_categories %>
       </div>
     </div>
     <div class="row">
