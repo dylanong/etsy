@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_053714) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "parent_id"
   end
 
   create_table "favourites", force: :cascade do |t|
@@ -97,8 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_053714) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "review", null: false
-    t.integer "rating", default: 1, null: false
+    t.text "review"
+    t.integer "rating"
     t.bigint "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

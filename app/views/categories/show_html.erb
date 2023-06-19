@@ -1,0 +1,19 @@
+<h2>Find something you love</h2>
+<div class="row">
+  <button>All Filters</button>
+  <button>Sort by: Relevancy</button>
+</div>
+<% @products.each do |product| %>
+  <div class="col-md-3 col-lg-3 col-sm-6">
+    <img src="<%= cl_image_path product.photo.key, height: 300, crop: :fill%>" alt="">
+    <div class="row">
+      <%= product.name %>
+    </div>
+    <div class="row">
+      <%= product.rating %>
+    </div>
+    <div class="row">
+      SGD<%= product.price %>
+    </div>
+  </div>
+<% end %>

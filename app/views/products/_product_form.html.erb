@@ -1,8 +1,177 @@
 <%= simple_form_for @product do |f| %>
-  <%= f.input  :name %>
-  <%= f.input :price %>
-  <%= f.input :quantity, as: :numeric %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
+  <div class="border p-3 mb-4 rounded-1">
+    <div class="row">
+      <h2>Photos</h2>
+      <p>Add as many as you can so buyers can see every detail.</p>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4>Photos*</h4>
+        <p>Use up to ten photos to show your item's most important qualities.</p>
+        <p>Tips:</p>
+        <ul>
+          <li>Use natural light and no flash</li>
+          <li>Include a common object for scale</li>
+          <li>Show the item being held, worn, or used.</li>
+          <li>Shoot agains a clean, simple background.</li>
+          <li>Add photos yo your variations so buyers can see all their options.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <%= f.input :photo, as: :file %>
+      </div>
+    </div>
+  </div>
+
+  <div class="border p-3 mb-4 rounded-1">
+    <div class="row">
+      <h2>Video</h2>
+      <p>Bring your product to life with a 5 to 15 second video - it could help you drive more sales. The video won't feature sound, so let your product do the talking!</p>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h4>Quick tip:</h4>
+        <ul>
+          <li>Film wearable items on a model for show a functional item being used.</li>
+          <li>Adjust your settings to record high resolution video - aim for 1080p or higher.</li>
+          <li>Crop your video after you upload it to get the right dimensions.</li>
+          <a href="#">Learn how to make videos that sell</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="border p-3 mb-4 rounded-1">
+    <div class="row">
+      <h2>Listing Details</h2>
+      <p>Tell the world all about your item and why they'll love it.</p>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h4>Title*</h4>
+        <p>Include keywords that buyer would use to search for your item.</p>
+      </div>
+      <div class="col">
+        <%= f.input :name, label: false %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h4>About this listing*</h4>
+        <a href="#">Learn more about what types of items are allowed on Etsy</a>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h4>Category*</h4>
+        <p>Type a two- or three-word description of your item to get category suggestions that will help more shoppers find it.</p>
+      </div>
+      <div class="col">
+        <%= f.input :categories, collection: Category.all_root_categories %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h4>Description*</h4>
+        <p>Start with a brief overview that describes your item’s finest features. Shoppers will only see the first few lines of your description at first, so make it count!</p>
+        <br>
+        <p>Not sure what else to say? Shoppers also like hearing about your process, and the story behind this item.</p>
+      </div>
+      <div class="col">
+        <%= f.input :description, label: false %>
+      </div>
+    </div>
+  </div>
+
+  <div class="border p-3 mb-4 rounded-1">
+    <div class="row">
+      <h2>Inventory and pricing</h2>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h4>Price *</h4>
+        <p>Remember to factor in the costs of materials, labour, and other business expenses. If you offer free delivery, make sure to include the cost of postage so it doesn't eat into your profits.</p>
+      </div>
+      <div class="col">
+        <%= f.input :price, label: false %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h4>Quantity *</h4>
+        <p>For quantities greater than one, this listing will renew automatically until it sells out. You’ll be charged a USD 0.20 USD listing fee each time.</p>
+      </div>
+      <div class="col">
+        <%= f.input :quantity, as: :numeric %>
+      </div>
+    </div>
+    <div class="row">
+      <h4>SKU</h4>
+      <span>Optional</span>
+      <p>SKUs are for your use only — buyers won’t see them. Learn more about SKU.</p>
+    </div>
+  </div>
+
+  <div class="border p-3 mb-5 rounded-1">
+    <div class="row">
+      <h2>Return and exchanges</h2>
+      <p>The selected policy will apply to this listing.</p>
+    </div>
+    <div class="row">
+      <div class="col border rounded-4 m-3 p-5">
+        <h3 class="mb-3">Get started with a simple policy</h3>
+        <h2>Returns and exchanges</h2>
+        <h2>30 days</h2>
+        <ul>
+          <li>Buyer can return or exchange this item</li>
+          <li>Buyer must return item within 30 days of delivery</li>
+          <li>Buyer is responsible for return postage costs</li>
+          <li>Buyer is responsible for loss in value (as agreed upon with seller) if an item isn't returned in original condition</li>
+        </ul>
+        <button>Apply simple policy</button>
+      </div>
+      <div class="col border rounded-4 m-3 p-5">
+        <h3 class="mb-3">Create a policy</h3>
+        <p>Set up a custom policy that best fits your listings. Remember, you can create different policies to use for different types of items.</p>
+        <button>+ Create policy</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row border-top fixed-bottom bg-light p-3 d-flex align-items-center">
+    <div class="col-2">
+      <%= button_to "Cancel", new_product_path, class: "btn btn-white border" %>
+    </div>
+    <div class="col fs-9">
+      This listing isn't active yet. It will be available to shoppers once you open your shop.
+    </div>
+    <div class="col-2">
+      <%= f.button :submit, value: "Save and continue", class: "btn btn-dark" %>
+
+    </div>
+
+  </div>
+
 <% end %>
+
+<%# def display_label
+
+
+  Category.main_category.each do |main|
+    main.find_children.each do |sub|
+      sub.find_children.each do |subsub|
+        subsub.find_children.each do |subsubsub|
+          subsubsub.name
+        end
+        subsub.name
+      end
+      sub.name
+    end
+    main.name
+  end
+end %>
+
+
+<%# end %>
