@@ -12,6 +12,12 @@ class OrdersController < ApplicationController
       @line_item.quantity = params[:quantity].to_i
       @line_item.save
     end
+
+    redirect_to product_path(product)
+  end
+
+  def show
+
   end
 
   def deal
@@ -19,7 +25,7 @@ class OrdersController < ApplicationController
   end
 
   def set_order
-    latest_order = current_user.order.last
+    latest_order = current_user.orders.last
 
     if latest_order.confirmed?
       @order = Order.new

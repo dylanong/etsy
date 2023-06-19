@@ -28,7 +28,7 @@
 
 
     <div class="form-group">
-          <%= simple_form_for(@product) do |f| %>
+          <%= simple_form_for(@product ,url: product_orders_path(params[:id]), :method => :post) do |f| %>
             <%# Select quantity drop down %>
               <%= f.input :quantity, collection: (1..@product.quantity) %>
                 <%# Colour picker %>
