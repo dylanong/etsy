@@ -42,11 +42,11 @@
   </div>
 
   <div class="border p-3 mb-4 rounded-1">
-    <div class="row">
+    <div class="row py-2">
       <h2>Listing Details</h2>
       <p>Tell the world all about your item and why they'll love it.</p>
     </div>
-    <div class="row">
+    <div class="row py-4">
       <div class="col-2">
         <h4>Title*</h4>
       </div>
@@ -56,32 +56,32 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-2">
-        <h4>About this listing*</h4>
-        <a href="#">Learn more about what types of items are allowed on Etsy</a>
+    <div class="row py-4">
+      <div class="d-flex">
+        <h4>About this listing → </h4>
+        <a class="mx-2" href="#">Learn more about what types of items are allowed on Etsy</a>
       </div>
       <div class="col">
       </div>
     </div>
-    <div class="row">
-      <div class="col-2">
+    <div class="row py-4">
+      <div class="col-5 py-2">
         <h4>Category*</h4>
         <p>Type a two- or three-word description of your item to get category suggestions that will help more shoppers find it.</p>
       </div>
-      <div class="col">
+      <div class="col-4">
         <%= f.association :categories, collection: Category.all_root_categories %>
       </div>
     </div>
-    <div class="row">
+    <div class="row py-4">
       <div class="col-2">
         <h4>Description*</h4>
-        <p>Start with a brief overview that describes your item’s finest features. Shoppers will only see the first few lines of your description at first, so make it count!</p>
+        <p class="h6">Start with a brief overview that describes your item’s finest features. Shoppers will only see the first few lines of your description at first, so make it count!</p>
         <br>
-        <p>Not sure what else to say? Shoppers also like hearing about your process, and the story behind this item.</p>
+        <p></p>
       </div>
       <div class="col">
-        <%= f.input :description, label: false %>
+        <%= f.input :description, label: false ,:placeholder => "Not sure what else to say? Shoppers also like hearing about your process, and the story behind this item." %>
       </div>
     </div>
   </div>
@@ -90,27 +90,27 @@
     <div class="row">
       <h2>Inventory and pricing</h2>
     </div>
-    <div class="row">
+    <div class="row py-4">
       <div class="col-2">
         <h4>Price *</h4>
-        <p>Remember to factor in the costs of materials, labour, and other business expenses. If you offer free delivery, make sure to include the cost of postage so it doesn't eat into your profits.</p>
       </div>
       <div class="col">
         <%= f.input :price, label: false %>
+        <p>Remember to factor in the costs of materials, labour, and other business expenses. If you offer free delivery, make sure to include the cost of postage so it doesn't eat into your profits.</p>
       </div>
     </div>
-    <div class="row">
+    <div class="row py-4">
       <div class="col-2">
         <h4>Quantity *</h4>
-        <p>For quantities greater than one, this listing will renew automatically until it sells out. You’ll be charged a USD 0.20 USD listing fee each time.</p>
       </div>
       <div class="col">
         <%= f.input :quantity, as: :numeric %>
+        <p>For quantities greater than one, this listing will renew automatically until it sells out. You’ll be charged a USD 0.20 USD listing fee each time.</p>
       </div>
     </div>
-    <div class="row">
+    <div class="row py-4">
       <h4>SKU</h4>
-      <span>Optional</span>
+      <span class="py-2">Optional</span>
       <p>SKUs are for your use only — buyers won’t see them. Learn more about SKU.</p>
     </div>
   </div>
@@ -123,8 +123,8 @@
     <div class="row">
       <div class="col border rounded-4 m-3 p-5">
         <h3 class="mb-3">Get started with a simple policy</h3>
-        <h2>Returns and exchanges</h2>
-        <h2>30 days</h2>
+        <h6 class="py-4">Returns and exchanges</h6>
+        <h6>30 days</h6>
         <ul>
           <li>Buyer can return or exchange this item</li>
           <li>Buyer must return item within 30 days of delivery</li>
@@ -135,14 +135,14 @@
       </div>
       <div class="col border rounded-4 m-3 p-5">
         <h3 class="mb-3">Create a policy</h3>
-        <p>Set up a custom policy that best fits your listings. Remember, you can create different policies to use for different types of items.</p>
+        <p class="py-4">Set up a custom policy that best fits your listings. Remember, you can create different policies to use for different types of items.</p>
         <button>+ Create policy</button>
       </div>
     </div>
   </div>
 
   <div class="row border-top fixed-bottom bg-light p-3 d-flex align-items-center">
-    <div class="col-2">
+    <div class="col-2 py-4">
       <%= button_to "Cancel", new_product_path, class: "btn btn-white border" %>
     </div>
     <div class="col fs-9">

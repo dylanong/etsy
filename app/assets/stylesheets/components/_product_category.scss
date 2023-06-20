@@ -106,6 +106,15 @@ li.listed-product {
   border-radius: 5px;
 }
 
+.last-foot {
+  background-color: $footer3;
+  width: 100vw;
+  color: white;
+  padding: 20px;
+  a {
+    color: white;
+  }
+
 .basket-image-container {
   width: 150px;
   height: 150px;
