@@ -8,10 +8,10 @@
       <div class="">
         <a href="<%= product_path(product) %>">
           <img class="img-thumbnail" src="<%= cl_image_path(product.photo.key, :width => 400, :height => 400, :crop => "fill") if product.photo.key %>" alt="<%= product.name %>" class="product-image">
-         </a>
+        </a>
       </div>
-      <div class="card">
-        <div class="bg-white mx-1 text-center">
+      <div class="">
+        <div class="bg-white mx-1 text-center card">
           <span><%= product.description %></span><br>
           <div class="rating-stars">
             <% average_rating = product.average_rating.to_i %>
@@ -46,7 +46,7 @@
   <h3>Shop our popular gift categories</h3>
   <div class="d-flex">
     <% @popular_categories.each do |category| %>
-      <div class="bg-white mx-1 text-center">
+      <div class="bg-white mx-1 text-center popular-gift-categories">
         <img class="img-fluid" src="<%= category[:img_url] %>" alt="<%= category[:name] %>">
         <div class="mt-2 fw-bold"><%= category[:name] %></div>
       </div>
