@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
-
+    @products = Product.all.limit(4)
   end
 
   private
