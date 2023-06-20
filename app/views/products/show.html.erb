@@ -39,7 +39,7 @@
 
 
     <div class="form-group form-control-sm">
-          <%= simple_form_for(@product) do |f| %>
+          <%= simple_form_for(@product, url: product_orders_path(@product), method: :patch ) do |f| %>
             <%# Select quantity drop down %>
               <%= f.input :quantity, collection: (1..@product.quantity)%>
                 <%# Colour picker %>
