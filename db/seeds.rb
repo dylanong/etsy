@@ -451,6 +451,22 @@ products = Product.create!(
       user: User.all.sample,
       quantity: 10,
       description: "The most authentic grandfather clocks. Tell the time better."
+    },
+
+    {
+      name: "Lego Pagani",
+      price: 50,
+      user: User.all.sample,
+      quantity: 10,
+      description: "Cool italian style sports car made from lego bricks."
+    },
+
+    {
+      name: "Maharishi Cave Tent",
+      price: 50,
+      user: User.all.sample,
+      quantity: 10,
+      description: "The camping gear for the great outdoors"
     }
   ]
 )
@@ -466,7 +482,7 @@ products.each do |product|
 
   product.categories << Category.all_root_categories.sample
 
-  # LineItem.create!(quanity: 4, product: product, order_id: order)
+  # LineItem.create!(quantity: 4, product: product, order_id: order)
 end
 
 p "CREATE FAVORITES"
@@ -479,7 +495,7 @@ end
 
 p "CREATE ORDERS"
 
-5.times do
+50.times do
   order = Order.new(user: User.all.sample, delivered: "false", total_price: 0)
 
   number_of_items = rand(1..3)

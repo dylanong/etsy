@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def deal
-    @order.confirmed!
+    @order.update(confirmed?: true)
     @order.line_items.each do |item|
       item.product.quantity -= item.quantity
     end
@@ -55,6 +55,7 @@ class OrdersController < ApplicationController
     if latest_order.confirmed?
       @order = Order.new
       @order.user = current_user
+      @order.total_price = 0
       @order.save
     else
       @order = latest_order
