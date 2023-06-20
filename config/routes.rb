@@ -6,11 +6,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :products, only: [:index, :new, :create, :show]
+  resources :products, only: [:index, :new, :create, :show] do
+    post "/orders", to: "orders#add"
+  end
 
-
-  get "/users/:id/products", to: "products#listing"
+  patch "/orders/deal", to: "orders#deal"
 
   resources :categories, only: [:show]
+
+  resources :orders, only: [:show, :index]
 
 end

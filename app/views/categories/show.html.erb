@@ -16,20 +16,23 @@
     </div>
   </div>
 
-
   <div class="category-cards">
     <% @products.each do |product| %>
-      <div class="category-card">
-        <img src="<%= cl_image_path product.photo.key, width: 325, height: 260, crop: :thumb%>" alt="">
-        <div class="row m-0">
-          <%= product.name %>
+    <%=  %>
+      <a href="<%= product_path(product) %>"  class="text-decoration-none">
+        <div class="category-card">
+          <img src="<%= cl_image_path product.photo.key, width: 325, height: 260, crop: :thumb%>" alt="">
+          <div class="row m-0 ">
+            <%= product.name %>
+          </div>
+          <div class="row m-0">
+            <p class="p-0"><%= "⭐" * 5 %></p>
+          </div>
+          <div class="row m-0">
+            SGD <%= product.price %>
+          </div>
         </div>
-        <div class="row m-0">
-        </div>
-        <div class="row m-0">
-          SGD <%= product.price %>
-        </div>
-      </div>
+      </a>
     <% end %>
   </div>
 </div>

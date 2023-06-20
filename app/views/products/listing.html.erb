@@ -1,9 +1,0 @@
-<div class="container">
-  <h1>Your Product Listings</h1>
-    <% @products.each do |product| %>
-      <%= product.name %>
-      <%= product.price %>
-      <%= product.description %>
-      <img src="<%= cl_image_path product.photo.key, height: 300, crop: :fill%>" alt="">
-    <% end %>
-</div>
