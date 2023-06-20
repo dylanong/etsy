@@ -1,6 +1,16 @@
 <div class="container mt-3">
   <% if @products.empty? %>
-    <h4><%= link_to "List a product to sell", new_product_path %></h4>
+    <div class="row d-flex align-items-center justify-content-between">
+        <div class="col">
+          <h1 class="title"> <%= link_to "List a product to sell", new_product_path %> </h1>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+          <%= link_to "Orders received", orders_path, class: "btn btn-dark rounded-5" %>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+          <%= link_to "Add new product", new_product_path, class: "btn btn-dark rounded-5" %>
+        </div>
+    </div>
   <% else %>
     <div class="row d-flex align-items-center justify-content-between">
       <div class="col">
@@ -11,9 +21,6 @@
       </div>
       <div class="col-lg-2 col-md-4 col-sm-6">
         <%= link_to "Add new product", new_product_path, class: "btn btn-dark rounded-5" %>
-      </div>
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <%= link_to "My basket", order_path(current_user), class: "btn btn-dark rounded-5" %>
       </div>
     </div>
     <hr>

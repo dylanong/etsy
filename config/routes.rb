@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :products, only: [:index, :new, :create, :show] do
-    post "/orders", to: "orders#add"
+    patch "/orders", to: "orders#add"
   end
 
   patch "/orders/deal", to: "orders#deal"
+
+  get "/orders/confirmation", to: "orders#confirmation"
 
   resources :categories, only: [:show]
 
