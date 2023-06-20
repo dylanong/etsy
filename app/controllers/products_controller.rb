@@ -28,6 +28,18 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @circles = [
+      { name: "Lego Pagani",
+        img_url: "https://uncrate.com/p/2023/02/lego-pagani-utopia-76915-1.jpg" },
+      { name: "Mini Yoda",
+        img_url: "https://uncrate.com/p/2023/03/lego-grogu-keychain-5006860-2.jpg" },
+      { name: "Maharishi Cave Tent",
+        img_url: "https://uncrate.com/p/2023/06/heimplanet-maharishi-cave-tent-1.jpg" },
+      { name: "Monopoly Heirloom",
+        img_url: "https://uncrate.com/p/2021/01/monopoly-heirloom-edition-41.jpg" },
+      { name: "Dryden Briefcase",
+        img_url: "https://uncrate.com/p/2020/03/filson-dryden-briefcase-1.jpg" }
+    ]
   end
 
   private
