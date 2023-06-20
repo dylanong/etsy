@@ -10,12 +10,10 @@ Rails.application.routes.draw do
     post "/orders", to: "orders#add"
   end
 
-  get "/orders/deal", to: "orders#deal"
-
-  get "/users/:id/products", to: "products#listing"
+  patch "/orders/deal", to: "orders#deal"
 
   resources :categories, only: [:show]
 
-  resources :orders, only: [:show]
+  resources :orders, only: [:show, :index]
 
 end
