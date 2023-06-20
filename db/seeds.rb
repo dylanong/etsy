@@ -467,6 +467,21 @@ products = Product.create!(
       user: User.all.sample,
       quantity: 10,
       description: "The camping gear for the great outdoors"
+    },
+
+    {
+      name: "Seiko Watch",
+      price: 50,
+      user: User.all.sample,
+      quantity: 10,
+      description: "Everlasting timepiece"
+    },
+    {
+      name: "Framed Ferrari",
+      price: 50,
+      user: User.all.sample,
+      quantity: 10,
+      description: "For the car aficionado!"
     }
   ]
 )
@@ -495,7 +510,7 @@ end
 
 p "CREATE ORDERS"
 
-50.times do
+80.times do
   order = Order.new(user: User.all.sample, delivered: "false", total_price: 0)
 
   number_of_items = rand(1..3)
