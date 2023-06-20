@@ -105,3 +105,13 @@ li.listed-product {
 .basket-image {
   border-radius: 5px;
 }
+
+.last-foot {
+  background-color: $footer3;
+  width: 100vw;
+  color: white;
+  padding: 20px;
+  a {
+    color: white;
+  }
+}
