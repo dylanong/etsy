@@ -12,17 +12,20 @@
 }
 
 .title {
-  font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+  font-family: "Guardian-EgypTT", Charter, "Charter Bitstream", Cambria,
+    "Noto Serif Light", "Droid Serif", Georgia, serif;
   font-size: 32px;
   font-weight: 300;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
 .pink-banner {
-  background-color: rgb(255, 232, 232);
+  background-color: #f9eae7;
   padding-top: 30px;
   padding-bottom: 30px;
-
+  h1 {
+    font-size: 2rem;
+  }
 }
 
 .basket-card {
@@ -43,12 +46,13 @@
   background-color: white;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;
-  color: black
+  color: black;
 }
 
 .list {
-  font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
-  letter-spacing: .5px;
+  font-family: "Guardian-EgypTT", Charter, "Charter Bitstream", Cambria,
+    "Noto Serif Light", "Droid Serif", Georgia, serif;
+  letter-spacing: 0.5px;
 }
 
 .listing-name {
@@ -68,11 +72,34 @@
 
 .listing-quantity {
   font-size: 20px;
-  font-weight: bold ;
+  font-weight: bold;
 }
 
 .listing-image {
-  border-radius: 5px ;
+  border-radius: 5px;
+}
+
+li.listed-product {
+  background-color: #f4f4f4;
+}
+
+.cat-name {
+  padding-left: 20px;
+}
+
+.video ul > li {
+  font-size: 14px;
+  border: 1px dotted grey;
+  margin: 0 5px;
+  padding: 2px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.video a {
+  font-size: 12px;
+  margin-left: 5px;
+  color: blue;
 }
 
 .basket-image {
