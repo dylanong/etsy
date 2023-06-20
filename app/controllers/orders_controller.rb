@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, exclude: [:show]
-  after_action :cal_price
+  before_action :set_order
+  before_action :cal_price
 
   def index
     @seller_orders = []
@@ -66,7 +66,8 @@ class OrdersController < ApplicationController
     @order.total_price = 0
 
     @order.line_items.each do |item|
-      @order.total_price += item.quantity * item.product.price
+      @order.total_price += (item.quantity * item.product.price)
     end
   end
+
 end
