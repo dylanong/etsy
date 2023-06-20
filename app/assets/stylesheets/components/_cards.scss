@@ -45,3 +45,36 @@
 .page h3 {
   padding-top: 20px;
 }
+
+.rating-stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rating-stars-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
+}
+
+.star {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  margin-right: 5px;
+}
+
+.star::before {
+  content: "\2606"; /* Empty star icon */
+  color: black;
+}
+
+.star.filled::before {
+  content: "\2605"; /* Filled star icon */
+}

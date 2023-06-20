@@ -1,0 +1,15 @@
+.login {
+  width: 30vw;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  animation-name: float-up;
+  position: relative;
+  transition: 300ms ease-in;
+}
+
+.login:hover {
+  transform: translateY(-10px);
+}

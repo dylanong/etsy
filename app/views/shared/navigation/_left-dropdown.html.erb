@@ -5,13 +5,18 @@
       data-parent-id="<%= parent_category.id %>"
       data-navbar-target="leftMenu"
       >
-      <li><a href="#">All <%= parent_category.name %> →</a></li>
+      <li style="list-style-type: none">
+      <a href="#">All <%= parent_category.name %> <span>→</span> </a>
+      </li>
 
       <% parent_category.find_children.each do |sub_category| %>
         <li
+          class="d-flex justify-content-between"
+          style="list-style-type: none;"
           data-id="<%= sub_category.id %>"
           data-action="mouseover->navbar#changeRightMenu">
-          <%= sub_category.name %>
+          <%= link_to sub_category.name, category_path(sub_category) %>
+          <span> 〉</span>
         </li>
       <% end %>
 

@@ -3,11 +3,11 @@
   <%# thumbnail product images on left panel %>
   <div class="thumbnail-product d-flex flex-column">
     <ul  data-controller="imgselect">
-     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key %></li>
-     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key%></li> <%# supposed to be other images when we add more photos %>
-     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key%></li>
-     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key%></li>
-     <li data-action="click->imgselect#updateMain" ><%= cl_image_tag @product.photo.key%></li>
+     <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key %></li>
+     <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li> <%# supposed to be other images when we add more photos %>
+     <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li>
+     <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li>
+     <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li>
     </ul>
   </div>
 
@@ -20,24 +20,35 @@
   <div class="detail-product">
       <p class="in-basket pdt-text">In 20+ baskets </p>
         <p class="sale pdt-text">Sale ends in 11 minutes</p>
-           <h3>SGD<%=@product.price%></h3>
+           <h3 class="p-2">SGD<%=@product.price%></h3>
         <h4 class="product-taxes-text">Local taxes included (where applicable)</h4>
-      <p class="pdt-text"><%=@product.name%> - <%=@product.description%></p>
+      <p class="pdt-text p-2 mb-2"><%=@product.name%> - <%=@product.description%></p>
       <%# reviews text below %>
-     <p class="pdt-text font-weight-bold d-block"> Shop: <%=@product.user.username%> - TODO: add review stars </p>
+
+      <div class="rating-stars-product">
+        <span class="pdt-text font-weight-bold d-block p-2">  <%=@product.user.username%>
+              <% average_rating = @product.average_rating.to_i %>
+                <% 5.times do |i| %>
+                  <% if i < average_rating %>
+                    <span class="star filled"></span>
+                  <% else %>
+                    <span class="star"></span>
+                  <% end %>
+              <% end %>
+        </div>
+      </span>
 
 
-    <div class="form-group">
-          <%= simple_form_for(@product ,url: product_orders_path(params[:id]), :method => :post) do |f| %>
+    <div class="form-group form-control-sm">
+          <%= simple_form_for(@product) do |f| %>
+
             <%# Select quantity drop down %>
-              <%= f.input :quantity, collection: (1..@product.quantity) %>
+              <%= f.input :quantity, collection: (1..@product.quantity)%>
                 <%# Colour picker %>
-                  <%= f.input :color, collection: ["Red", "Blue", "Yellow"] %>
+                  <%= f.input :color, collection: ["Red", "Blue", "Yellow"]%>
               <%# Add to basket button %>
-            <%= f.submit 'Add to Basket', class: "btn btn-dark rounded-5"%>
+            <%= f.submit 'Add to Basket', class: "w-100 btn btn-dark rounded-5 d-block"%>
           <% end %>
-
-      <%= link_to "Add to Basket", "#", class: "btn btn-dark rounded-5 d-block" %>
     </div>
   </div>
 </div>
