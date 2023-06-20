@@ -6,34 +6,32 @@
     </div>
   </div>
   <div class="content d-flex">
-    <div class="col-lg-6 col-md-6">
+    <div class="col-lg-7 col-md-7">
       <% @order.line_items.each do |item| %>
       <div class="basket-card">
         <div class="row">
           <div class="col">
             <%= item.product.user.username %>
           </div>
-          <div class="col">
+          <div class="col text-end">
             Contact shop
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <div class="col">
-              <img src="<%= cl_image_path item.product.photo.key, width: 325, height: 260, crop: :thumb %>" alt="">
-            </div>
-            <div class="col">
-              <div class="row">
-                <p><%= item.product.name %></p>
-                <p><%= item.quantity %></p>
-              </div>
-              <div class="row">
-                <div class="col">Save for later</div>
-                <div class="col">Remove</div>
-              </div>
-            </div>
+            <img class="basket-image"src="<%= cl_image_path item.product.photo.key, width: 150, height: 150, crop: :thumb %>" alt="">
           </div>
           <div class="col">
+            <div class="row">
+              <p><%= item.product.name %></p>
+              <p><%= item.quantity %></p>
+            </div>
+            <div class="row">
+              <div class="col">Save for later</div>
+              <div class="col">Remove</div>
+            </div>
+          </div>
+          <div class="col text-end">
             <p>SGD <%= item.product.price %></p>
             <p>Only <%= item.product.quantity %> available</p>
           </div>
@@ -42,7 +40,7 @@
           <div class="col">
             + Add a note to <%= item.product.user.username %>
           </div>
-          <div class="col">
+          <div class="col text-end">
             <p>Delivery: SGD 5</p>
             <p>Estimated delivery: 30 Feb 2024 from Iceland</p>
           </div>
@@ -87,7 +85,7 @@
           <span>Total (<%= @order.line_items.count %> items)</span>
           <span><%= @order.total_price %></span>
         </div>
-        <%= button_to "Proceed to checkout", orders_deal_path %>
+        <%= link_to "Proceed to checkout", orders_deal_path %>
       </div>
     </div>
     </div>

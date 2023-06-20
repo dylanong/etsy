@@ -20,11 +20,15 @@ class OrdersController < ApplicationController
     else
       @line_item = LineItem.new
       @line_item.order = @order
+      @line_item.product = product
       @line_item.quantity = params[:quantity].to_i
       @line_item.save
     end
 
-    redirect_to product_path(product)
+    redirect_to order_path(current_user)
+  end
+
+  def destroy
   end
 
   def show
@@ -36,6 +40,11 @@ class OrdersController < ApplicationController
     @order.line_items.each do |item|
       item.product.quantity -= item.quantity
     end
+    redirect_to orders_confirmation_path
+  end
+
+  def confirmation
+
   end
 
   private
