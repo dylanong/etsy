@@ -29,9 +29,9 @@
       <p>Bring your product to life with a 5 to 15 second video - it could help you drive more sales. The video won't feature sound, so let your product do the talking!</p>
     </div>
     <div class="row">
-      <div class="col-2">
+      <div class="video">
         <h4>Quick tip:</h4>
-        <ul>
+        <ul class="d-flex justify-content-between w-100">
           <li>Film wearable items on a model for show a functional item being used.</li>
           <li>Adjust your settings to record high resolution video - aim for 1080p or higher.</li>
           <li>Crop your video after you upload it to get the right dimensions.</li>
@@ -49,10 +49,11 @@
     <div class="row">
       <div class="col-2">
         <h4>Title*</h4>
-        <p>Include keywords that buyer would use to search for your item.</p>
       </div>
       <div class="col">
-        <%= f.input :name, label: false %>
+        <div>
+          <%= f.input :name, label: false, :placeholder => "Include keywords that buyer would use to search for your item"%>
+        </div>
       </div>
     </div>
     <div class="row">

@@ -12,4 +12,17 @@
 
 .login:hover {
   transform: translateY(-10px);
+  backdrop-filter: blur(8px);
+}
+
+.form-actions {
+  background-color: black;
+  border-radius: 20px;
+  text-align: center;
+  input {
+    color: white;
+  }
+  input:hover {
+    color: white;
+  }
 }

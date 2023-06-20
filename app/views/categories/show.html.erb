@@ -1,11 +1,11 @@
 <div class="pink-banner">
   <div class="container">
-    <h1><%= link_to "🔙", root_path, class: "text-decoration-none" %><span class="title"><%= @category.name %></span></h1>
+    <h1><%= link_to "🔙", root_path, class: "text-decoration-none" %><span class="title cat-name"><%= @category.name %></span></h1>
     <p>(<%= @products.count %> results, with Ads)</p>
   </div>
 </div>
 <div class="container p-0">
-
+  <br>
   <h1 class="title">Find something you love</h1>
   <div class="row d-flex justify-content-between align-items-center mb-3">
     <div class="col-2">
