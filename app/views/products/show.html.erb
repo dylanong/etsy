@@ -71,6 +71,17 @@
     <%  if @product.reviews.blank?   %>
       <p>Be the first to add a review for this product.</p>
       <% else %>
+        <div class="rating-stars-product">
+          <span class="pdt-text font-weight-bold d-block p-2">
+              <% average_rating = @product.average_rating.to_i %>
+                <% 5.times do |i| %>
+                  <% if i < average_rating %>
+                    <span class="star filled"></span>
+                  <% else %>
+                    <span class="star"></span>
+                  <% end %>
+              <% end %>
+        </div>
     <% @product.reviews do |review| %>
           <%= review.review %>
           <%= review.ratings %>
