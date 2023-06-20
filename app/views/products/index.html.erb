@@ -1,24 +1,43 @@
-<h1> Your Etsy Shop </h1>
-
-<% if @products == 0 %>
-  <h4><%= link_to "List a product to sell", new_product_path %></h4>
-<% else %>
-  <h4> Products listed for sale </h4>
-<% end %>
-
-<%= link_to "Back to homepage", root_path %>
-<%= link_to "Add new product", new_product_path %>
-
-<div class="container">
-  <h1>All Products</h1>
-  <ul>
-    <li>
-      <% @products.each do |product| %>
-      <%= product.name %>
-      <%= product.price %>
-      <%= product.description %>
-      <img src="<%= cl_image_path product.photo.key, height: 300, crop: :fill%>" alt="">
-      <% end %>
-    </li>
-  </ul>
+<div class="container mt-3">
+  <% if @products.empty? %>
+    <h4><%= link_to "List a product to sell", new_product_path %></h4>
+  <% else %>
+    <div class="row d-flex align-items-center justify-content-between">
+      <div class="col">
+        <h1 class="title"> Products listed for sale </h1>
+      </div>
+      <div class="col-lg-2 col-md-4 col-sm-6">
+        <%= link_to "Orders received", orders_path, class: "btn btn-dark rounded-5" %>
+      </div>
+      <div class="col-lg-2 col-md-4 col-sm-6">
+        <%= link_to "Add new product", new_product_path, class: "btn btn-dark rounded-5" %>
+      </div>
+      <div class="col-lg-2 col-md-4 col-sm-6">
+        <%= link_to "My basket", order_path(current_user), class: "btn btn-dark rounded-5" %>
+      </div>
+    </div>
+    <hr>
+    <ul>
+      <li>
+        <% @products.each do |product| %>
+          <a class="text-decoration-none" href="<%= product_path(product) %>">
+            <div class="listing-card">
+              <div class="col-3">
+                <img src="<%= cl_image_path product.photo.key, width: 200, height: 200, crop: :fill%>" class="listing-image" alt="">
+              </div>
+              <div class="col">
+                <p class="list listing-name"><%= product.name %></p>
+                <p class="list listing-price">SGD <%= product.price %></p>
+                <p class="list listing-description"><%= product.description %></p>
+              </div>
+              <div class="col text-end list listing-quantity">
+                <p>Stocks on hand:</p>
+                <p><%= product.quantity %></p>
+              </div>
+            </div>
+          </a>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
 </div>

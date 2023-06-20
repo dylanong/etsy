@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <h1 class="title"><%= @order.line_items.count %> items in your basket</h1>
+    <div class="protection">
+      Buy confidently with Etsy's Purchase Protection programme for buyers, get a full refund in the rare case your item doesn't arrive, arrives damaged, or isn't as described. See eligibility
+    </div>
+  </div>
+  <div class="content d-flex">
+    <div class="col-lg-6 col-md-6">
+      <% @order.line_items.each do |item| %>
+      <div class="basket-card">
+        <div class="row">
+          <div class="col">
+            <%= item.product.user.username %>
+          </div>
+          <div class="col">
+            Contact shop
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="col">
+              <img src="<%= cl_image_path item.product.photo.key, width: 325, height: 260, crop: :thumb %>" alt="">
+            </div>
+            <div class="col">
+              <div class="row">
+                <p><%= item.product.name %></p>
+                <p><%= item.quantity %></p>
+              </div>
+              <div class="row">
+                <div class="col">Save for later</div>
+                <div class="col">Remove</div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <p>SGD <%= item.product.price %></p>
+            <p>Only <%= item.product.quantity %> available</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            + Add a note to <%= item.product.user.username %>
+          </div>
+          <div class="col">
+            <p>Delivery: SGD 5</p>
+            <p>Estimated delivery: 30 Feb 2024 from Iceland</p>
+          </div>
+        </div>
+        <div class="row">
+          <input type="checkbox" id="gift">
+          <label for="gift"> This order is a gift</label><br>
+          <p>Prices will not be shown on packing slip</p>
+          <br>
+          <br>
+          <p>Apply shop coupon codes</p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="payment mx-3 w-100">
+      <div class="col-lg-5 col-md-5">
+        <p>How you'll pay</p>
+        <div class="row">
+          <div class="col">
+            Item(s) total
+          </div>
+          <div class="col">
+            SGD <%= @order.total_price %>
+          </div>
+        </div>
+        <div class="row">
+          <span>Shop discount</span>
+          <span>-SGD 15</span>
+        </div>
+        <hr>
+        <div class="row">
+          <span>Subtotal</span>
+          <span>SGD <%= @order.total_price - 15 %></span>
+        </div>
+        <div class="row">
+          <span>Delivery</span>
+          <span>SGD 13</span>
+        </div>
+        <hr>
+        <div class="row">
+          <span>Total (<%= @order.line_items.count %> items)</span>
+          <span><%= @order.total_price %></span>
+        </div>
+        <%= button_to "Proceed to checkout", orders_deal_path %>
+      </div>
+    </div>
+    </div>
+
+</div>

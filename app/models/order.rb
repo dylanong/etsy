@@ -8,6 +8,6 @@ class Order < ApplicationRecord
   validates :user_id, presence: true
 
   def confirmed!
-    self.confirmed? = true
+    self.confirmed? == true
   end
 end

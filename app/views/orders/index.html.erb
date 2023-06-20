@@ -1,0 +1,37 @@
+<div class="container mt-3">
+  <% if @seller_orders.empty? %>
+    <h1>Currently no order received.</h1>
+  <% else %>
+    <div class="row d-flex align-items-center justify-content-between">
+      <div class="col">
+        <h1 class="title"> Orders Received </h1>
+      </div>
+      <div class="col-lg-2 col-md-4 col-sm-6">
+        <%= link_to "My Listings", products_path, class: "btn btn-dark rounded-5" %>
+      </div>
+    </div>
+    <hr>
+    <ul>
+      <li>
+        <% @seller_orders.each do |item| %>
+          <div class="listing-card">
+            <div class="col-3">
+              <img src="<%= cl_image_path item.product.photo.key, width: 200, height: 200, crop: :fill%>" class="listing-image" alt="">
+            </div>
+            <div class="col">
+              <p class="list listing-name"><%= item.product.name %></p>
+              <p class="list listing-price">SGD <%= item.product.price %></p>
+              <p class="list listing-description"><%= item.product.description %></p>
+            </div>
+            <div class="col text-end list listing-quantity">
+              <p>Quantity ordered:</p>
+              <p><%= item.quantity %></p>
+              <p>Quantity left after order:</p>
+              <p><%= item.product.quantity %></p>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+</div>

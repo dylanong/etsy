@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show]
 
   def index
-    @products = Product.all
+    @products = current_user.products
   end
 
   def new
@@ -28,10 +28,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-  end
-
-  def listing
-    @products = current_user.products
   end
 
   private
