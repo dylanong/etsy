@@ -1,17 +1,14 @@
 <!-- Below Navbar -->
 <div class="page">
 
-  <h3 class="px-3">Popular gifts right now</h3>
-  <div class="d-flex">
-  <% @products.each do |product| %>
-    <div class="popular-gift-card">
-      <div class="">
-        <a href="<%= product_path(product) %>">
-          <img class="img-thumbnail" src="<%= cl_image_path(product.photo.key, :width => 400, :height => 400, :crop => "fill") if product.photo.key %>" alt="<%= product.name %>" class="product-image">
-        </a>
-      </div>
-      <div class="">
-        <div class="bg-white mx-1 text-center card">
+  <div class="container">
+    <h3 class="px-3">Popular gifts right now</h3>
+    <div class="d-flex">
+      <% @products.each do |product| %>
+        <div class="bg-white mx-1 text-center card" style="height: 500px; width: 25%;">
+          <a href="<%= product_path(product) %>">
+            <img class="img-thumbnail" src="<%= cl_image_path(product.photo.key, :width => 400, :height => 400, :crop => "fill") if product.photo.key %>" alt="<%= product.name %>" class="product-image">
+          </a>
           <span><%= product.description %></span><br>
           <div class="rating-stars">
             <% average_rating = product.average_rating.to_i %>
@@ -25,32 +22,35 @@
           </div>
           <span><%= product.price %></span>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
 
   <!-- Circle section -->
-  <div class="d-flex justify-content-between mt-5 mb-5">
-    <% @circles.each do |category| %>
-      <div class="d-flex flex-column align-items-center">
-        <div class="bg-white mx-1 text-center circle">
-          <img class="img-fluid" src="<%= category[:img_url] %>" alt="<%= category[:name] %>">
+  <div class="container">
+    <div class="d-flex justify-content-evenly mt-5 mb-5">
+      <% @circles.each do |category| %>
+        <div class="d-flex flex-column align-items-center">
+          <div class="bg-white mx-1 text-center circle">
+            <img class="img-fluid" src="<%= category[:img_url] %>" alt="<%= category[:name] %>">
+          </div>
+          <div class="mt-2 fw-bold text-wrap" style="width: 6rem;"><%= category[:name] %></div>
         </div>
-        <div class="mt-2 fw-bold"><%= category[:name] %></div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
   <!-- Category section -->
-  <h3>Shop our popular gift categories</h3>
-  <div class="d-flex">
-    <% @popular_categories.each do |category| %>
-      <div class="bg-white mx-1 text-center popular-gift-categories">
-        <img class="img-fluid" src="<%= category[:img_url] %>" alt="<%= category[:name] %>">
-        <div class="mt-2 fw-bold"><%= category[:name] %></div>
-      </div>
-    <% end %>
+  <div class="container">
+    <h3>Shop our popular gift categories</h3>
+    <div class="d-flex">
+      <% @popular_categories.each do |category| %>
+        <div class="bg-white mx-1 text-center popular-gift-categories" style="width: 20%">
+          <img class="img-fluid" src="<%= category[:img_url] %>" alt="<%= category[:name] %>">
+          <div class="mt-2 fw-bold"><%= category[:name] %></div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
