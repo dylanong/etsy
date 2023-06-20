@@ -4,9 +4,9 @@
   <div class="thumbnail-product d-flex flex-column">
     <ul  data-controller="imgselect">
      <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key %></li>
-     <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li> <%# supposed to be other images when we add more photos %>
-     <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li>
-     <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li>
+      <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li> <%# supposed to be other images when we add more photos %>
+       <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li>
+      <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li>
      <li data-imgselect-target = "thumbnail" ><%= cl_image_tag @product.photo.key%></li>
     </ul>
   </div>
@@ -24,7 +24,6 @@
         <h4 class="product-taxes-text">Local taxes included (where applicable)</h4>
       <p class="pdt-text p-2 mb-2"><%=@product.name%> - <%=@product.description%></p>
       <%# reviews text below %>
-
       <div class="rating-stars-product">
         <span class="pdt-text font-weight-bold d-block p-2">  <%=@product.user.username%>
               <% average_rating = @product.average_rating.to_i %>
@@ -41,7 +40,6 @@
 
     <div class="form-group form-control-sm">
           <%= simple_form_for(@product, url: product_orders_path(@product), method: :patch ) do |f| %>
-
             <%# Select quantity drop down %>
               <%= f.input :quantity, collection: (1..@product.quantity)%>
                 <%# Colour picker %>
@@ -54,8 +52,30 @@
 </div>
 
 <div class="container">
+  <%# suggestions section %>
+
+  <p class="mt-5"> Related products </p>
+    <div class="d-flex justify-content-between align-column mt-2 mb-5">
+      <% @circles.each do |category| %>
+          <div class="mx-1 text-center">
+            <img class="img-fluid w-1 h-1 img-responsive" src="<%= category[:img_url] %>" alt="<%= category[:name] %>"><br>
+          </div>
+        <div class="mt-2"><br><%= category[:name] %></div>
+      <% end %>
+    </div>
+
+
+  <%# reviews section %>
   <div class="reviews-summary">
-    <p class="pdt-text"> <%=@reviews%> Reviews for this item </p>
+    <p class="mt-2"> Reviews for this item </p>
+    <%  if @product.reviews.blank?   %>
+      <p>Be the first to add a review for this product.</p>
+      <% else %>
+    <% @product.reviews do |review| %>
+          <%= review.review %>
+          <%= review.ratings %>
+        <% end %>
+    <% end %>
 
   </div>
 </div>
