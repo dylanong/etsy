@@ -10,18 +10,18 @@
       <% @order.line_items.each do |item| %>
       <div class="basket-card">
         <div class="row">
-          <div class="col">
+          <div class="col bold-font">
             <%= item.product.user.username %>
           </div>
-          <div class="col text-end">
+          <div class="col text-end bold-font">
             Contact shop
           </div>
         </div>
         <div class="row">
-          <div class="col">
-            <img class="basket-image"src="<%= cl_image_path item.product.photo.key, width: 150, height: 150, crop: :thumb %>" alt="">
+          <div class="col-3 mt-2 mb-2">
+            <img class="basket-image" src="<%= cl_image_path item.product.photo.key, width: 150, height: 150, crop: :thumb %>" alt="">
           </div>
-          <div class="col">
+          <div class="col px-0">
             <div class="row">
               <p><%= item.product.name %></p>
               <p><%= item.quantity %></p>
@@ -33,7 +33,7 @@
           </div>
           <div class="col text-end">
             <p>SGD <%= item.product.price %></p>
-            <p>Only <%= item.product.quantity %> available</p>
+            <p class="red-font">Only <%= item.product.quantity %> available in stocks!</p>
           </div>
         </div>
         <div class="row">
@@ -46,8 +46,10 @@
           </div>
         </div>
         <div class="row">
-          <input type="checkbox" id="gift">
-          <label for="gift"> This order is a gift</label><br>
+          <span>
+            <input type="checkbox" id="gift">
+            <label for="gift"> This order is a gift</label><br>
+          </span>
           <p>Prices will not be shown on packing slip</p>
           <br>
           <br>
@@ -56,38 +58,60 @@
       </div>
       <% end %>
     </div>
-    <div class="payment mx-3 w-100">
-      <div class="col-lg-5 col-md-5">
-        <p>How you'll pay</p>
-        <div class="row">
-          <div class="col">
-            Item(s) total
+    <% if @order.line_items.empty? == false %>
+      <div class="payment mx-3 col-lg-5 col-md-5">
+        <div class="">
+          <p>How you'll pay</p>
+          <div class="row d-flex justify-content-between">
+            <div class="col">
+              Item(s) total
+            </div>
+            <div class="col text-end">
+              SGD <%= @order.total_price %>
+            </div>
           </div>
-          <div class="col">
-            SGD <%= @order.total_price %>
+          <div class="row d-flex justify-content-between">
+            <div class="col">
+              Shop discount
+            </div>
+            <div class="col text-end">
+              -SGD 15
+            </div>
+          </div>
+          <hr>
+          <div class="row  d-flex justify-content-between">
+            <div class="col">
+              Subtotal
+            </div>
+            <div class="col text-end">
+              SGD <%= @order.total_price - 15 %>
+            </div>
+          </div>
+          <div class="row  d-flex justify-content-between">
+            <div class="col">
+              Delivery
+            </div>
+            <div class="col text-end">
+              SGD 13
+            </div>
+          </div>
+          <hr>
+          <div class="row  d-flex justify-content-between">
+            <div class="col">
+              Total (<%= @order.line_items.count %> items)
+            </div>
+            <div class="col text-end mb-2">
+              SGD <%= @order.total_price %>
+            </div>
+          </div>
+          <div class="col text-end">
+            <%= simple_form_for(@order, url: orders_deal_path )do |f| %>
+              <%= f.submit 'Proceed to checkout', class: "btn btn-dark rounded-5" %>
+            <% end %>
           </div>
         </div>
-        <div class="row">
-          <span>Shop discount</span>
-          <span>-SGD 15</span>
-        </div>
-        <hr>
-        <div class="row">
-          <span>Subtotal</span>
-          <span>SGD <%= @order.total_price - 15 %></span>
-        </div>
-        <div class="row">
-          <span>Delivery</span>
-          <span>SGD 13</span>
-        </div>
-        <hr>
-        <div class="row">
-          <span>Total (<%= @order.line_items.count %> items)</span>
-          <span><%= @order.total_price %></span>
-        </div>
-        <%= link_to "Proceed to checkout", orders_deal_path %>
       </div>
-    </div>
+    <% end %>
     </div>
 
 </div>
